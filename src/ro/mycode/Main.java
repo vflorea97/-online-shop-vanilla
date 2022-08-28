@@ -20,11 +20,11 @@ public class Main {
 //        ViewCustomer viewCustomer = new ViewCustomer(customer);
 //        viewCustomer.customerRun();
 
-        ViewUser2 viewUser2 = new ViewUser2();
-        viewUser2.customerRun();
+//        ViewUser2 viewUser2 = new ViewUser2();
+//        viewUser2.customerRun();
 
-//        ViewLogin viewLogin = new ViewLogin();
-//        viewLogin.start();
+        ViewUser viewUser = new ViewUser();
+        viewUser.customerRun();
 
     }
 }

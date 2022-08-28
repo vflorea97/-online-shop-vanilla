@@ -39,6 +39,7 @@ public class ViewUser {
           System.out.println("Apasa 3 pentru a adauga in cos");
           System.out.println("Apasa 4 pentru a afisa cosul");
           System.out.println("Apasa 5 pentru a sterge un produs din comanda");
+          System.out.println("Apasa 6 pentru a modifica cantitatea");
       }
     public void customerRun (){
         boolean run = true;
@@ -61,6 +62,9 @@ public class ViewUser {
                     break;
                 case 5:
                     removeProduct();
+                    break;
+                case 6:
+                    upDateCantitate();
                     break;
                 case 0:
                     run = false;
@@ -129,6 +133,46 @@ public class ViewUser {
             System.out.println("Produsul nu exista");
         }else if (!controllerOrderDetails.verificareProdusComanda(product.getId(), order.getId())){
             System.out.println("Produsul nu exista in cos");
+        }
+    }
+    public void upDateCantitate (){
+        System.out.println("Introdu numele produsului:");
+        String produs = scanner.nextLine();
+        Product product = controllerProducts.getProductByName(produs);
+        if (product != null && controllerOrderDetails.verificareProdusComanda(product.getId(),order.getId())){
+            System.out.println("Introdu noua cantitate:");
+            int cantitate = Integer.parseInt(scanner.nextLine());
+            if (cantitate < product.getStock()){
+                OrderDetails orderDetails = controllerOrderDetails.findOrderOrderId(order.getId());
+                if (cantitate < orderDetails.getQuantity()) {
+                    product.setStock(product.getStock() + (orderDetails.getQuantity()) - cantitate);
+                    orderDetails.setQuantity(cantitate);
+                    orderDetails.setPrice(cantitate * product.getPrice());
+                    controllerOrderDetails.upDateOrderDetails(orderDetails);
+                }else if (cantitate > orderDetails.getQuantity()){
+                    product.setStock(product.getStock() - ( cantitate - orderDetails.getQuantity()));
+                    orderDetails.setQuantity(cantitate);
+                    orderDetails.setPrice(cantitate * product.getPrice());
+                    controllerOrderDetails.upDateOrderDetails(orderDetails);
+                }else if (cantitate == 0){
+                    product.setStock(product.getStock() + orderDetails.getQuantity());
+                    orderDetails.setQuantity(cantitate);
+                    orderDetails.setPrice(0);
+                    controllerOrderDetails.upDateOrderDetails(orderDetails);
+                }
+                System.out.println("Ai modificat cantitaea cu succes!!");
+                //update candtiatatea produsu
+
+
+
+
+            }else{
+                System.out.println("Nu exista pe stoc cantitatea dorita. Introduceti o cantitatea mai mica:");
+            }
+        }else if (product == null){
+            System.out.println("Produsul nu exista in sistem!!");
+        }else if (!controllerOrderDetails.verificareProdusComanda(product.getId(), order.getId())){
+            System.out.println("Produsul nu exista in cos!!");
         }
     }
 }
