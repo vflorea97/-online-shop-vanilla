@@ -1,0 +1,4 @@
+200,Aparat de ras,12,27
+201,Deodorant,8,37
+202,Periuta de dinti,17,15
+203,Pasta de dinti,23,12
