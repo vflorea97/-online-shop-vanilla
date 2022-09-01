@@ -163,9 +163,6 @@ public class ViewUser {
                 System.out.println("Ai modificat cantitaea cu succes!!");
                 //update candtiatatea produsu
 
-
-
-
             }else{
                 System.out.println("Nu exista pe stoc cantitatea dorita. Introduceti o cantitatea mai mica:");
             }
@@ -174,5 +171,7 @@ public class ViewUser {
         }else if (!controllerOrderDetails.verificareProdusComanda(product.getId(), order.getId())){
             System.out.println("Produsul nu exista in cos!!");
         }
+    }
+    public void removeOrder (){
     }
 }

@@ -16,15 +16,15 @@ public class Main {
 //
 //        System.out.println(controllerOrderDetails.contor("201 202 202 "));
 
-//        Customer customer = new Customer(101,"bbb@gmail.com","pepene12","Andrei Ion");
-//        ViewCustomer viewCustomer = new ViewCustomer(customer);
-//        viewCustomer.customerRun();
+        Customer customer = new Customer(101,"bbb@gmail.com","pepene12","Andrei Ion");
+        ViewCustomer viewCustomer = new ViewCustomer(customer);
+        viewCustomer.customerRun();
 
 //        ViewUser2 viewUser2 = new ViewUser2();
 //        viewUser2.customerRun();
 
-        ViewUser viewUser = new ViewUser();
-        viewUser.customerRun();
+//        ViewUser viewUser = new ViewUser();
+//        viewUser.customerRun();
 
     }
 }

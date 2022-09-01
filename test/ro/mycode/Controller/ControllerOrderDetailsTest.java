@@ -99,7 +99,7 @@ class ControllerOrderDetailsTest {
         OrderDetails orderDetails = new OrderDetails(402,301,200,36,3);
         controllerOrderDetails.addOrderDetails(orderDetails);
 
-//        controllerOrderDetails.removeProduct(orderDetails.getProductId());
+        controllerOrderDetails.removeProduct(orderDetails.getProductId(), orderDetails.getOrderId());
 
         assertEquals(-1,controllerOrderDetails.pozitie(orderDetails.getOrderId()));
     }
@@ -120,14 +120,16 @@ class ControllerOrderDetailsTest {
         ControllerOrderDetails controllerOrderDetails = new ControllerOrderDetails("new");
         OrderDetails orderDetails = new OrderDetails(402,301,200,36,3);
         OrderDetails orderDetails1 = new OrderDetails(412,311,250,31,5);
+        controllerOrderDetails.addOrderDetails(orderDetails);
+        controllerOrderDetails.addOrderDetails(orderDetails1);
 
-        ArrayList<OrderDetails> orders = new ArrayList<>();
-        orders.add(orderDetails);
-        orders.add(orderDetails1);
+        ArrayList<OrderDetails> order = new ArrayList<>();
 
-        controllerOrderDetails.removeProdus(orders,orderDetails.getOrderId());
+        controllerOrderDetails.removeProdus(order,311);
+        controllerOrderDetails.removeProdus(order,301);
 
-        assertEquals(-1,controllerOrderDetails.pozitieInArray(orders,orderDetails.getProductId()));
+        assertEquals(0,order.size());
+
 
     }
 
